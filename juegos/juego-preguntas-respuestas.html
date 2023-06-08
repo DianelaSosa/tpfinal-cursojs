@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de preguntas y respuestas</title>
+    <link rel="stylesheet" href="../sass/custom.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 900px;
+            /* height: 100vh; */
+        }
+
+        h2 {
+            color: #814167;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #div_num_question {
+            background-color: #1DB7F0;
+        }
+
+        #question-options {
+            border-bottom: 4px solid #5694E4;
+            border-top: 4px solid #5694E4;
+        }
+
+        #num_question, #question {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-check {
+            margin: 0 15px 0 15px;
+        }
+
+        input[name="answers"]:checked {
+            background-color: #DBB65E;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        #msgError {
+            font-weight: 500;
+            font-size: 14px;
+            color: firebrick;
+            display: none;
+        }
+
+        .btn {
+            color: white;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        #reset {
+            background-color: #814167;
+        }
+
+        #next, #finish {
+            background-color: #9B45BD;
+        }
+
+        #msgResult {
+            font-size: 18px;
+            font-weight: 600;
+            color: forestgreen;
+            display: none;
+        }
+
+        .correct-partial-result, .incorrect-partial-result {
+            font-weight: 500;
+            font-size: 14px;
+            display: none;
+        }
+
+        .correct-partial-result  {
+            color: limegreen;
+        }
+
+        .incorrect-partial-result {
+            color: firebrick;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 border-bottom border-4 border-primary">
+        <div class="container-fluid p-2">
+            <span class="navbar-brand mb-0 h1">
+                Curso
+                <img src="../imagenes/logo-javascript.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../formulario.html">Formulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase" href="juegos.html">Juegos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex flex-column justify-content-center mt-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 p-0">
+                <h2>
+                    JUEGO DE PREGUNTAS Y RESPUESTAS
+                </h2>
+            </div>
+        </div>
+
+        <div id="question-options" class="row align-items-center justify-content-center mt-5">
+            <div id="div_num_question" class="col-1 text-center p-2">
+                <p id="num_question">1</p>
+            </div>
+            <div class="col-11 p-2">
+                <p id="question" class="fst-italic">¿A qué saga pertenece el personaje de Katniss Everdeen?</p>
+            </div>
+            <div id="options" class="col-12 d-flex justify-content-center p-2">
+                <div class="form-check form-check-inline">
+                    <input id="option1" name="answers" type="radio" class="form-check-input" value="option1">
+                    <label class="form-check-label" for="option1">Divergente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="option2" name="answers" type="radio" class="form-check-input" value="option2">
+                    <label class="form-check-label" for="option2">Los juegos del hambre</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="option3" name="answers" type="radio" class="form-check-input" value="option3">
+                    <label class="form-check-label" for="option3">La quinta ola</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="option4" name="answers" type="radio" class="form-check-input" value="option4">
+                    <label class="form-check-label" for="option4">Crepúsculo</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+            <div id="msg" class="col-12 col-md-6 d-flex align-items-center p-2">
+                <p id="msgError">Por favor, seleccione una opción antes de continuar.</p>
+                <p class="correct-partial-result">¡Respuesta correcta! Suma 33 puntos</p>
+                <p class="incorrect-partial-result">¡Respuesta incorrecta! Suma 0 puntos</p>
+            </div>
+            <div class="col-12 col-md-6 gap-2 d-flex justify-content-md-end p-2">
+                <button class="btn" id="reset">
+                    Reiniciar
+                    <i class="bi bi-arrow-counterclockwise ms-1"></i>
+                </button>
+                <button class="btn" id="next">
+                    Siguiente
+                    <i class="bi bi-chevron-right ms-1"></i>
+                </button>
+                <button class="btn" style="display: none;" id="finish">
+                    Finalizar
+                    <i class="bi bi-trophy ms-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+            <div id="results" class="col-12 d-flex justify-content-center p-2">
+                <p id="msgResult" style="display: none;"></p>
+            </div>
+        </div>
+    </div>
+    <script src="../jquery-3.7.0.min.js"></script>
+    <script src="juego-preguntas-y-respuestas.js"></script>
+    
+</body>
+</html>

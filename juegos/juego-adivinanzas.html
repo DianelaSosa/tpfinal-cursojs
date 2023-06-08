@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de adivinanzas</title>
+    <link rel="stylesheet" href="../sass/custom.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 900px;
+            /* height: 100vh; */
+        }
+
+        h2 {
+            color: #CD3C66;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .question-options {
+            border: 2px solid #C2CC74;
+            background-color: #F1F5F2;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-check {
+            margin: 0 15px 0 15px;
+        }
+
+        input[name="answers-1"]:checked, input[name="answers-2"]:checked, input[name="answers-3"]:checked {
+            background-color: #37CBA6;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        .correct-partial-result, .incorrect-partial-result {
+            font-weight: 500;
+            font-size: 14px;
+            display: none;
+        }
+
+        .correct-partial-result  {
+            color: limegreen;
+        }
+
+        .incorrect-partial-result {
+            color: firebrick;
+        }
+
+        #msgError {
+            font-weight: 500;
+            font-size: 14px;
+            color: firebrick;
+            display: none;
+        }
+
+        #reset {
+            color: #CD3C66;
+            border: 2px solid #CD3C66;
+            background-color: #EAF0DE;
+        }
+
+        #finish {
+            color: #291E3C;
+            border: 2px solid #291E3C;
+            background-color: #EAF0DE;
+        }
+
+        #msgResult {
+            font-size: 18px;
+            font-weight: 600;
+            color: forestgreen;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 border-bottom border-4 border-primary">
+        <div class="container-fluid p-2">
+            <span class="navbar-brand mb-0 h1">
+                Curso
+                <img src="../imagenes/logo-javascript.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../formulario.html">Formulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase" href="juegos.html">Juegos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex flex-column justify-content-center mt-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 p-0">
+                <h2>
+                    JUEGO DE ADIVINANZAS
+                </h2>
+            </div>
+            <div class="col-12 col-md-8 question-options mt-5">
+                <div id="question-options-1" class="row align-items-center justify-content-center">
+                    <div class="col-12 d-flex justify-content-center p-2">
+                        <p id="question-1" class="question fst-italic">¿A quién se le atribuye la frase "Solo sé que no sé nada"?</p>
+                    </div>
+                    <div id="options-1" class="col-12 d-flex justify-content-center p-2">
+                        <div class="form-check form-check-inline">
+                            <input id="option11" name="answers-1" type="radio" class="form-check-input" value="option1">
+                            <label class="form-check-label" for="option11">Aristóteles</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option12" name="answers-1" type="radio" class="form-check-input" value="option2">
+                            <label class="form-check-label" for="option12">Salomón</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option13" name="answers-1" type="radio" class="form-check-input" value="option3">
+                            <label class="form-check-label" for="option13">Sócrates</label>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-12 col-md-4 d-flex justify-content-end p-2">
+                <p id="correct-result-1" class="correct-partial-result">¡Respuesta correcta! Suma 33 puntos</p>
+                <p id="incorrect-result-1" class="incorrect-partial-result">¡Respuesta incorrecta! Suma 0 puntos</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center mt-2">
+            <div class="col-12 col-md-8 question-options">
+                <div id="question-options-2" class="row align-items-center justify-content-center">
+                    <div class="col-12 d-flex justify-content-center p-2">
+                        <p id="question-2" class="question fst-italic">¿Cuál es la montaña más alta de América?</p>
+                    </div>
+                    <div id="options-2" class="col-12 d-flex justify-content-center p-2">
+                        <div class="form-check form-check-inline">
+                            <input id="option21" name="answers-2" type="radio" class="form-check-input" value="option1">
+                            <label class="form-check-label" for="option21">Aconcagua</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option22" name="answers-2" type="radio" class="form-check-input" value="option2">
+                            <label class="form-check-label" for="option22">Monte Everest</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option23" name="answers-2" type="radio" class="form-check-input" value="option3">
+                            <label class="form-check-label" for="option23">Monte Fuji</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex justify-content-end p-2">
+                <p id="correct-result-2" class="correct-partial-result">¡Respuesta correcta! Suma 33 puntos</p>
+                <p id="incorrect-result-2" class="incorrect-partial-result">¡Respuesta incorrecta! Suma 0 puntos</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center mt-2">
+            <div class="col-12 col-md-8 question-options">
+                <div id="question-options-3" class="row align-items-center justify-content-center">
+                    <div class="col-12 d-flex justify-content-center p-2">
+                        <p id="question-3" class="question fst-italic">¿Cuál es el metal cuyo símbolo químico es Au?</p>
+                    </div>
+                    <div id="options-3" class="col-12 d-flex justify-content-center p-2">
+                        <div class="form-check form-check-inline">
+                            <input id="option31" name="answers-3" type="radio" class="form-check-input" value="option1">
+                            <label class="form-check-label" for="option31">Aluminio</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option32" name="answers-3" type="radio" class="form-check-input" value="option2">
+                            <label class="form-check-label" for="option32">Oro</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="option33" name="answers-3" type="radio" class="form-check-input" value="option3">
+                            <label class="form-check-label" for="option33">Arsénico</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex justify-content-end p-2">
+                <p id="correct-result-3" class="correct-partial-result">¡Respuesta correcta! Suma 34 puntos</p>
+                <p id="incorrect-result-3" class="incorrect-partial-result">¡Respuesta incorrecta! Suma 0 puntos</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center mt-2">
+            <div class="col-12 col-md-6 gap-2 d-flex justify-content-md-start p-0">
+                <button class="btn" id="reset">
+                    Reiniciar
+                    <i class="bi bi-arrow-counterclockwise ms-1"></i>
+                </button>
+                <button class="btn" id="finish">
+                    Finalizar
+                    <i class="bi bi-trophy ms-1"></i>
+                </button>
+            </div>
+            <div id="error" class="col-12 col-md-6 d-flex align-items-end justify-content-md-end p-2">
+                <p id="msgError">Por favor, seleccione todas las respuestas antes de finalizar.</p> 
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center mt-2">
+            <div id="results" class="col-12 d-flex justify-content-center p-2">
+                <p id="msgResult"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../jquery-3.7.0.min.js"></script>
+    <script src="juego-adivinanzas.js"></script>
+</body>
+</html>

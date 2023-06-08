@@ -2,18 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
 
     <link rel="stylesheet" href="./sass/custom.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        /* .row {
-            border: 1px solid black;
-            margin: 10px !important;
-        } */
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 border-bottom border-4 border-primary">
@@ -33,13 +26,16 @@
                     <li class="nav-item">
                         <a class="nav-link active text-uppercase" href="formulario.html">Formulario</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="juegos/juegos.html">Juegos</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container overflow-hidden mt-4">
-        <form action="" id="formulario" class="row g-2 align-items-center">
+        <form action="" id="myForm" class="row g-2 align-items-center">
             <div class="col-12 col-md-5 p-2 ejemplo">
                 <div class="form-floating">
                     <input type="text" id="inputName" class="form-control" placeholder="Ingrese su nombre" required>
@@ -56,7 +52,7 @@
                 <div class="form-floating input-group">
                     <input type="number" id="inputAge" class="form-control" placeholder="Ingrese su edad">
                     <label for="inputAge" class="form-label">Edad</label>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div id="inputAgeFeedback" hidden>
                         La edad no es válida.
                     </div>
                 </div>

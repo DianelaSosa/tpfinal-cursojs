@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos</title>
+    <link rel="stylesheet" href="../sass/custom.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .game {
+            border-radius: 20px;
+        }
+
+        #game-1 {
+            background-color: #C8C653;
+        }
+
+        #game-2 {
+            background-color: #B18D81;
+        }
+
+        .game-description {
+            text-align: justify;
+        }
+
+        .game-title {
+            text-decoration: underline;
+        }
+
+        #game-title-1 {
+            color: #CD3C66;
+        }
+
+        #game-title-2 {
+            color: #814167;
+        }
+
+        #play-game-1 {
+            color: #EAF0DE;
+            border: 2px solid #291E3C;
+            background-color: #291E3C;
+        }
+        
+        #play-game-2 {
+            color: #9B45BD;
+            border: 2px solid #9B45BD;
+            background-color: #F1DDE7;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 border-bottom border-4 border-primary">
+        <div class="container-fluid p-2">
+            <span class="navbar-brand mb-0 h1">
+                Curso
+                <img src="../imagenes/logo-javascript.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../formulario.html">Formulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase" href="juegos.html">Juegos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-4">
+        <div class="row align-items-center justify-content-between">
+            <div id="game-1" class="col-12 col-md-5 me-1 p-4 game">
+                <h3 id="game-title-1" class="game-title">
+                    JUEGO DE ADIVINANZAS
+                </h3>
+                <p id="game-description-1" class="game-description">
+                    En este juego se te presentarán tres preguntas con sus respectivas opciones. Deberás seleccionar la opción que consideres que es correcta. A medida que selecciones las opciones se mostrará tu puntaje parcial y al final del juego se mostrará tu puntaje final. Podrás reiniciar el juego en cualquier momento. ¡Buena suerte!
+                </p>
+                <a id="play-game-1" class="btn" href="form-juego-1.html" role="button">
+                    Jugar
+                    <i class="bi bi-play-fill"></i>
+                </a>
+            </div>
+            <div id="game-2" class="col-12 col-md-6 p-4 game">
+                <h3 id="game-title-2" class="game-title">
+                    JUEGO DE PREGUNTAS Y RESPUESTAS
+                </h3>
+                <p class="game-description">
+                    En este juego se te presentarán cinco preguntas con sus respectivas opciones. Deberás seleccionar la opción que consideres que es correcta. A medida que selecciones las opciones se mostrará tu puntaje parcial y al final del juego se mostrará tu puntaje final. Podrás reiniciar el juego en cualquier momento. ¡Diviertete!
+                </p>
+                <a id="play-game-2" class="btn" href="form-juego-2.html" role="button">
+                    Jugar
+                    <i class="bi bi-play-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
