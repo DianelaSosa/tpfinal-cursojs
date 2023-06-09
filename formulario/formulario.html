@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+
+    <link rel="stylesheet" href="../sass/custom.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* #inputAgeFeedback, .inputPasswordFeedback, #inputEmailFeedback {
+            display: none;
+        } */
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 border-bottom border-4 border-primary">
+        <div class="container-fluid p-2">
+            <span class="navbar-brand mb-0 h1">
+                Curso
+                <img src="../imagenes/logo-javascript.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase" href="formulario.html">Formulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="../juegos/juegos.html">Juegos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container overflow-hidden mt-4">
+        <form id="myForm" class="row g-2 align-items-start">
+            <div class="col-12 col-md-5 p-2">
+                <div class="form-floating">
+                    <input type="text" id="inputName" class="form-control" placeholder="Ingrese su nombre" required>
+                    <label for="inputName" class="form-label">Nombre</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 p-2">
+                <div class="form-floating">
+                    <input type="text" id="inputLastName" class="form-control" placeholder="Ingrese su apellido" required>
+                    <label for="inputLastName" class="form-label">Apellido</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-2 p-2">
+                <div class="form-floating input-group">
+                    <input type="number" id="inputAge" class="form-control" placeholder="Ingrese su edad">
+                    <label for="inputAge" class="form-label">Edad</label>
+                    <div id="inputAgeFeedback" class="invalid-feedback">
+                        La edad no es válida.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 p-2">
+                <div class="form-floating">
+                    <select id="selectCountry" class="form-select">
+                        <option value="0" selected>Seleccionar un país</option>
+                    </select>
+                    <label for="selectCountry" class="form-label">País</label>
+                </div>
+                <div id="selectCountryFeedback" class="invalid-feedback">
+                    No se pudo obtener la lista de países.
+                </div>
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <div class="form-floating">
+                    <select id="selectProvince" class="form-select">
+                        <option value="0" selected>Seleccionar una provincia</option>
+                    </select>
+                    <label for="selectProvince" class="form-label">Provincia</label>
+                </div>
+                <div id="selectProvinceFeedback" class="invalid-feedback">
+                    No se pudo obtener la lista de provincias.
+                </div>
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <div class="form-floating">
+                    <select id="selectCity" class="form-select">
+                        <option selected>Seleccionar una ciudad</option>
+                    </select>
+                    <label for="selectCity" class="form-label">Ciudad</label>
+                </div>
+                <div id="selectCityFeedback" class="invalid-feedback">
+                    No se pudo obtener la lista de localidades.
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-2">
+                <div class="form-floating">
+                    <input type="text" id="inputMail" class="form-control" placeholder="ejemplo@ejemplo.com">
+                    <label for="inputMail" class="form-label">Correo electrónico</label>
+                </div>
+                <div id="inputEmailFeedback" class="invalid-feedback">
+                    Ingrese un correo electrónico válido.
+                </div>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+                <div class="form-floating">
+                    <input type="text" id="inputUsername" class="form-control" placeholder="Ingrese su nombre" required>
+                    <label for="inputUsername" class="form-label">Nombre de usuario</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+                <div class="form-floating">
+                    <input type="password" id="inputPassword1" class="form-control" required>
+                    <label for="inputPassword1" class="form-label">Contraseña</label>
+                    <div class="invalid-feedback inputPasswordFeedback">
+                        Las contraseñas no son iguales.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+                <div class="form-floating">
+                    <input type="password" id="inputPassword2" class="form-control" required>
+                    <label for="inputPassword2" class="form-label">Repetir contraseña</label>
+                    <div class="invalid-feedback inputPasswordFeedback">
+                        Las contraseñas no son iguales.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 p-2 d-md-flex justify-content-md-end">
+                <button type="submit" id="buttomSubmit" class="btn btn-primary">Enviar formulario</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Inclusión de archivos .js: -->
+    <script src="../jquery-3.7.0.min.js"></script>
+    <script src="llamadas-a-apis.js"></script>
+    <script src="validaciones-formulario.js"></script>
+</body>
+</html>
