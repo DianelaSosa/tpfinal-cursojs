@@ -31,7 +31,6 @@ $(document).ready(function(){
             //console.log(provincias);
             
             for (let i = 0; i < provincias.length; i++) {
-                //let option = $("<option>").text(provincias[i].nombre).val(provincias[i].nombre.toLowerCase());
                 let option = $("<option>").text(provincias[i].nombre).val(provincias[i].id);
                 select.append(option);
             }
@@ -42,13 +41,13 @@ $(document).ready(function(){
     });
 
     $("#selectProvince").change(function() {
-        //let nameSelectedProvince = $(this).find("option:selected").val().toLowerCase();
         let idSelectedProvince = $(this).find("option:selected").val();
-        console.log(idSelectedProvince);
+        //console.log(idSelectedProvince);
+
         $.ajax({
             url: `https://apis.datos.gob.ar/georef/api/localidades`,
             method: "GET",
-            data: {provincia: idSelectedProvince, campos: "id", max: 1000},
+            data: { provincia: idSelectedProvince, campos: "id", max: 1000 },
             dataType: "json",
             success: function(data) {
                 let select = $("#selectCity");

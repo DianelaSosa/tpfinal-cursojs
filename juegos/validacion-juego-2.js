@@ -8,7 +8,9 @@ $(document).ready(function() {
             $("#msgError").show();
         } else {
             $("#msgError").hide();
+
             location = "juego-preguntas-respuestas.html";
+            
             sessionStorage.setItem('nombre', playerName);
             sessionStorage.setItem('puntaje', 0);
         }

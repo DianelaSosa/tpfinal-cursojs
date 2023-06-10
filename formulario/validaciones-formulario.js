@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $("#myForm").submit(function(event) {
+        let error = false;
+
         //let name = $("#inputName").val();
         //let lastName = $("#inputLastName").val();
         let age = $("#inputAge").val();
@@ -7,11 +9,12 @@ $(document).ready(function() {
         //let username = $("#inputUsername").val();
         let password1 = $("#inputPassword1").val();
         let password2 = $("#inputPassword2").val();
-        let error = false;
-
+        
         let ageFeedback = $("#inputAgeFeedback");
         let emailFeedback = $("#inputEmailFeedback");
         let passwordFeedback = $(".inputPasswordFeedback");
+
+        $(".invalid-feedback").hide();
 
         if (age < 0 || age > 150) {
             error = true;
@@ -33,7 +36,7 @@ $(document).ready(function() {
 
         if (error) {
             event.preventDefault();
-            console.log("Formulario completado con errores");
+            //console.log("Formulario completado con errores");
         }
     })
 })

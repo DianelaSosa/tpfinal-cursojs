@@ -20,7 +20,6 @@ $(document).ready(function(){
         let checked_option = $("input[name=answers]:checked").val();
 
         if (checked_option) { //Si el jugador seleccionó una opción
-
             $("#msgError").hide();
 
             //Obtengo el puntaje del jugador y corroboro si seleccionó la respuesta correcta
@@ -43,15 +42,15 @@ $(document).ready(function(){
                 $(".incorrect-partial-result").text("¡Respuesta incorrecta! Puntaje parcial: " + score + " puntos");
                 $(".incorrect-partial-result").show();
             }
-            console.log(score);
+            
+            //console.log(score);
             sessionStorage.setItem("puntaje", score);
 
+             //Paso a la siguiente pregunta:
             pregunta_actual++;
 
             if (pregunta_actual <= 5) {
-                //Paso a la siguiente pregunta:
-                
-                console.log(pregunta_actual);
+                //console.log(pregunta_actual);
 
                 //Según el número de pregunta, cambio la texto de la pregunta y sus respectivas opciones
                 $("#num_question").text(pregunta_actual);
