@@ -11,6 +11,27 @@ $(document).ready(function(){
     var pregunta_5 = "¿Con quién está casada Katy Perry?";
     var respuestas_5 = ["Orlando Bloom", "Russell Brand", "Travie McCoy"];
 
+    var preg_resp = [{
+        pregunta: "¿A qué saga pertenece el personaje de Katniss Everdeen?",
+        respuestas: ["Divergente", "Los juegos del hambre", "La quinta ola", "Crepúsculo"]
+    },
+    {
+        pregunta: "¿Cuál es la persona con más seguidores en Instagram?",
+        respuestas: ["Lionel Messi", "Miley Cyrus", "Cristiano Ronaldo", "Selena Gómez", "Taylor Swift"]
+    },
+    {
+        pregunta: "¿Cuál es el animal más grande del mundo?",
+        respuestas: ["Elefante", "Anaconda", "Orca", "Oso polar", "Ballena azul", "Jirafa"]
+    },
+    {
+        pregunta: "¿Cuál es el país más grande del mundo?",
+        respuestas: ["Canadá", "Argentina", "Estados Unidos", "Rusia", "Brasil"]
+    },
+    {
+        pregunta: "¿Con quién está casada Katy Perry?",
+        respuestas: ["Orlando Bloom", "Russell Brand", "Travie McCoy"]
+    }];
+
     var playerName = "";
     var score = 0
 
@@ -46,7 +67,7 @@ $(document).ready(function(){
             //console.log(score);
             sessionStorage.setItem("puntaje", score);
 
-             //Paso a la siguiente pregunta:
+            //Paso a la siguiente pregunta:
             pregunta_actual++;
 
             if (pregunta_actual <= 5) {
@@ -55,40 +76,43 @@ $(document).ready(function(){
                 //Según el número de pregunta, cambio la texto de la pregunta y sus respectivas opciones
                 $("#num_question").text(pregunta_actual);
                 $("#options").empty();
+
+                $("#question").text(preg_resp[pregunta_actual-1].pregunta);
+                cargarOpciones(preg_resp[pregunta_actual-1].respuestas);
                 
-                switch(pregunta_actual) {
-                    case 1: 
-                        //console.log(pregunta_1);
-                        $("#question").text(pregunta_1);
+                // switch(pregunta_actual) {
+                //     case 1: 
+                //         //console.log(pregunta_1);
+                //         $("#question").text(pregunta_1);
 
-                        cargarOpciones(respuestas_1);
-                        break;
-                    case 2: 
-                        //console.log(pregunta_2);
-                        $("#question").text(pregunta_2);
+                //         cargarOpciones(respuestas_1);
+                //         break;
+                //     case 2: 
+                //         //console.log(pregunta_2);
+                //         $("#question").text(pregunta_2);
 
-                        cargarOpciones(respuestas_2);
-                        break;
-                    case 3: 
-                        //console.log(pregunta_3);
-                        $("#question").text(pregunta_3);
+                //         cargarOpciones(respuestas_2);
+                //         break;
+                //     case 3: 
+                //         //console.log(pregunta_3);
+                //         $("#question").text(pregunta_3);
 
-                        cargarOpciones(respuestas_3);
-                        break;
-                    case 4: 
-                        //console.log(pregunta_4);
-                        $("#question").text(pregunta_4);
+                //         cargarOpciones(respuestas_3);
+                //         break;
+                //     case 4: 
+                //         //console.log(pregunta_4);
+                //         $("#question").text(pregunta_4);
 
-                        cargarOpciones(respuestas_4);
-                        break;
-                    case 5: 
-                        //console.log(pregunta_5);
-                        $("#question").text(pregunta_5);
+                //         cargarOpciones(respuestas_4);
+                //         break;
+                //     case 5: 
+                //         //console.log(pregunta_5);
+                //         $("#question").text(pregunta_5);
 
-                        cargarOpciones(respuestas_5);
-                        break;
-                    default: break;
-                }
+                //         cargarOpciones(respuestas_5);
+                //         break;
+                //     default: break;
+                // }
             }
 
             //Si el jugador está en la última pregunta, oculto el mensaje de "Siguiente" ya que no hay más preguntas y hago visible el botón finalizar para mostrarle el puntaje
