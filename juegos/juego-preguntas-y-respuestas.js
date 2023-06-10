@@ -3,23 +3,28 @@ $(document).ready(function(){
 
     var preg_resp = [{
         pregunta: "¿A qué saga pertenece el personaje de Katniss Everdeen?",
-        respuestas: ["Divergente", "Los juegos del hambre", "La quinta ola", "Crepúsculo"]
+        opciones: ["Divergente", "Los juegos del hambre", "La quinta ola", "Crepúsculo"],
+        respuesta: "option2"
     },
     {
         pregunta: "¿Cuál es la persona con más seguidores en Instagram?",
-        respuestas: ["Lionel Messi", "Miley Cyrus", "Cristiano Ronaldo", "Selena Gómez", "Taylor Swift"]
+        opciones: ["Lionel Messi", "Miley Cyrus", "Cristiano Ronaldo", "Selena Gómez", "Taylor Swift"],
+        respuesta: "option3"
     },
     {
         pregunta: "¿Cuál es el animal más grande del mundo?",
-        respuestas: ["Elefante", "Anaconda", "Orca", "Oso polar", "Ballena azul", "Jirafa"]
+        opciones: ["Elefante", "Anaconda", "Orca", "Oso polar", "Ballena azul", "Jirafa"],
+        respuesta: "option5"
     },
     {
         pregunta: "¿Cuál es el país más grande del mundo?",
-        respuestas: ["Canadá", "Argentina", "Estados Unidos", "Rusia", "Brasil"]
+        opciones: ["Canadá", "Argentina", "Estados Unidos", "Rusia", "Brasil"],
+        respuesta: "option4"
     },
     {
         pregunta: "¿Con quién está casada Katy Perry?",
-        respuestas: ["Orlando Bloom", "Russell Brand", "Travie McCoy"]
+        opciones: ["Orlando Bloom", "Russell Brand", "Travie McCoy"],
+        respuesta: "option1"
     }];
 
     var playerName = "";
@@ -37,11 +42,7 @@ $(document).ready(function(){
             score = Number(sessionStorage.getItem("puntaje"));
 
             //Si el jugador acertó en la respuesta, incremento su puntaje en 20 (cada pregunta vale 20 puntos)
-            if ((pregunta_actual === 1 && checked_option === "option2") ||
-                (pregunta_actual === 2 && checked_option === "option3") ||
-                (pregunta_actual === 3 && checked_option === "option5") ||
-                (pregunta_actual === 4 && checked_option === "option4") ||
-                (pregunta_actual === 5 && checked_option === "option1")) {
+            if (preg_resp[pregunta_actual-1].respuesta === checked_option) {
                     score += 20;
                     $(".incorrect-partial-result").hide();
                     $(".correct-partial-result").text("¡Respuesta correcta! Puntaje parcial: " + score + " puntos");
@@ -63,12 +64,12 @@ $(document).ready(function(){
             if (pregunta_actual <= 5) {
                 //console.log(pregunta_actual);
 
-                //Según el número de pregunta, cambio la texto de la pregunta y sus respectivas opciones
-                $("#num_question").text(pregunta_actual);
+                //Cambio el texto de la pregunta y sus respectivas opciones
+                $("#num_question").text(pregunta_actual+"/5");
                 $("#options").empty();
 
                 $("#question").text(preg_resp[pregunta_actual-1].pregunta);
-                cargarOpciones(preg_resp[pregunta_actual-1].respuestas);
+                cargarOpciones(preg_resp[pregunta_actual-1].opciones);
             }
 
             //Si el jugador está en la última pregunta, oculto el mensaje de "Siguiente" ya que no hay más preguntas y hago visible el botón finalizar para mostrarle el puntaje
@@ -98,31 +99,41 @@ $(document).ready(function(){
         playerName = sessionStorage.getItem("nombre");
         score = sessionStorage.getItem("puntaje");
 
-        sessionStorage.setItem("puntaje", 0);
+        $(".msgResult").text(playerName + ", tu puntaje final es: " + score + "/100.");
 
-        $("#msgResult").text("¡Felicitaciones " + playerName + "! Su puntaje final es: " + score + "/100.");
-        $("#msgResult").show();
+        if (score > 50) {
+            $(".alert-success").show();
+        } else {
+            $(".alert-danger").show();
+        }
+
+        score = 0;
+        sessionStorage.setItem("puntaje", score);
+
         $("#finish").hide();
-        score = 0
+        $(".correct-partial-result").hide();
+        $(".incorrect-partial-result").hide();
     })
 
     $("#reset").click(function() {
         //Vuelvo a la pregunta 1:
         pregunta_actual = 1;
-        $("#num_question").text(pregunta_actual);
+        $("#num_question").text(pregunta_actual+"/5");
         $("#question").text(preg_resp[pregunta_actual-1].pregunta);
         $("#options").empty();
-        cargarOpciones(preg_resp[pregunta_actual-1].respuestas);
+        cargarOpciones(preg_resp[pregunta_actual-1].opciones);
 
         //Oculto todos los mensajes por si están visibles
         $("#msgError").hide();
-        $("#msgResult").hide();
+        $(".alert").hide();
         $(".correct-partial-result").hide();
         $(".incorrect-partial-result").hide();
+        
         $("#finish").hide();
         $("#next").show();
 
         //Seteó el puntaje del jugador en cero:
-        sessionStorage.setItem("puntaje", 0);
+        score = 0;
+        sessionStorage.setItem("puntaje", score);
     })
 })

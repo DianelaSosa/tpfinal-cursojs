@@ -60,12 +60,16 @@ $(document).ready(function(){
             playerName = sessionStorage.getItem("nombre");
             score = sessionStorage.getItem("puntaje");
 
-            sessionStorage.setItem("puntaje", 0);
+            $(".msgResult").text(playerName + ", tu puntaje final es: " + score + "/100.");
 
-            $("#msgResult").text("¡Felicitaciones " + playerName + "! Su puntaje final es: " + score + "/100.");
-            $("#msgResult").show();
+            if (score > 50) {
+                $(".alert-success").show();
+            } else {
+                $(".alert-danger").show();
+            }
 
             score = 0;
+            sessionStorage.setItem("puntaje", 0);
         }
     })
 
@@ -81,7 +85,6 @@ $(document).ready(function(){
         //Oculto todos los mensajes por si están visibles
         $(".correct-partial-result").hide();
         $(".incorrect-partial-result").hide();
-        $("#msgResult").hide();
+        $(".alert").hide();
     })
-
 })

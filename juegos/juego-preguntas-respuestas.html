@@ -78,11 +78,8 @@
         #finish {
             display: none;
         }
-
-        #msgResult {
-            font-size: 18px;
-            font-weight: 600;
-            color: forestgreen;
+        
+        .alert {
             display: none;
         }
 
@@ -137,7 +134,7 @@
 
         <div id="question-options" class="row align-items-center justify-content-center mt-5">
             <div id="div_num_question" class="col-1 text-center p-2">
-                <p id="num_question">1</p>
+                <p id="num_question">1/5</p>
             </div>
             <div class="col-11 p-2">
                 <p id="question" class="fst-italic">¿A qué saga pertenece el personaje de Katniss Everdeen?</p>
@@ -184,9 +181,16 @@
             </div>
         </div>
 
-        <div class="row align-items-center justify-content-center">
-            <div id="results" class="col-12 d-flex justify-content-center p-2">
-                <p id="msgResult"></p>
+        <div class="row align-items-center justify-content-center mt-2">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="alert alert-success" role="alert">
+                    <strong>¡Felicitaciones!</strong>
+                    <span class="msgResult"></span>
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    <strong>¡Lo siento!</strong>
+                    <span class="msgResult"></span>
+                </div>
             </div>
         </div>
     </div>

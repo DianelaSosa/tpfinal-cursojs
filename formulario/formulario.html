@@ -6,12 +6,10 @@
     <title>Formulario</title>
 
     <link rel="stylesheet" href="../sass/custom.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* #inputAgeFeedback, .inputPasswordFeedback, #inputEmailFeedback {
-            display: none;
-        } */
         .alert {
             display: none;
         }
@@ -124,12 +122,18 @@
 
             <div class="col-12 col-md-6 p-2">
                 <div class="form-floating">
-                    <input type="password" id="inputPassword1" class="form-control" required>
+                    <input type="password" id="inputPassword1" class="form-control" aria-labelledby="passwordHelpInline" required>
                     <label for="inputPassword1" class="form-label">Contraseña</label>
-                    <div class="invalid-feedback inputPasswordFeedback">
+                    <div id="inputPasswordFeedback1" class="invalid-feedback inputPasswordFeedback">
                         Las contraseñas no son iguales.
                     </div>
                 </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-2">
+                <span id="passwordHelpInline" class="form-text">
+                    La contraseña debe tener al menos 8 caracteres.
+                </span>
             </div>
 
             <div class="col-12 col-md-6 p-2">
@@ -140,13 +144,15 @@
                         Las contraseñas no son iguales.
                     </div>
                 </div>
-
             </div>
+
             <div class="col-12 p-2 d-md-flex justify-content-md-end">
                 <button type="submit" id="buttomSubmit" class="btn btn-primary">Enviar formulario</button>
             </div>
         </form>
+
         <div class="alert alert-success" role="alert">
+            <i class="bi bi-check-circle me-2"></i>
             ¡Formulario completado exitosamente!
         </div>
     </div>
