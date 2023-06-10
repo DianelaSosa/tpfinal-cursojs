@@ -12,6 +12,9 @@
         /* #inputAgeFeedback, .inputPasswordFeedback, #inputEmailFeedback {
             display: none;
         } */
+        .alert {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +64,7 @@
                     <input type="number" id="inputAge" class="form-control" placeholder="Ingrese su edad">
                     <label for="inputAge" class="form-label">Edad</label>
                     <div id="inputAgeFeedback" class="invalid-feedback">
-                        La edad no es válida.
+                        La edad debe ser mayor a cero y menor a 150.
                     </div>
                 </div>
             </div>
@@ -143,6 +146,9 @@
                 <button type="submit" id="buttomSubmit" class="btn btn-primary">Enviar formulario</button>
             </div>
         </form>
+        <div class="alert alert-success" role="alert">
+            ¡Formulario completado exitosamente!
+        </div>
     </div>
     
     <!-- Inclusión de archivos .js: -->

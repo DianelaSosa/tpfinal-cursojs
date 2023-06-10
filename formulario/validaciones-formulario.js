@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $("#myForm").submit(function(event) {
+        event.preventDefault();
+
         let error = false;
 
         //let name = $("#inputName").val();
@@ -15,6 +17,7 @@ $(document).ready(function() {
         let passwordFeedback = $(".inputPasswordFeedback");
 
         $(".invalid-feedback").hide();
+        $(".alert").hide();
 
         if (age < 0 || age > 150) {
             error = true;
@@ -35,8 +38,9 @@ $(document).ready(function() {
         }
 
         if (error) {
-            event.preventDefault();
             //console.log("Formulario completado con errores");
+        } else {
+            $(".alert").show();
         }
     })
 })
